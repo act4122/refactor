@@ -11,8 +11,7 @@
  *
  */
 
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
 
 /**
  * This is a class representing a single piece (a piece that has not been
@@ -45,7 +44,8 @@ public class SinglePiece extends Piece {
     * 
     * @return type which is 0 for single
     */
-   public int getType() {
+   @Override
+public int getType() {
  
 	   return type;
    }

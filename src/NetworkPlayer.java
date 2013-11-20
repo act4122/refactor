@@ -11,10 +11,17 @@
  *
  */
 
-import java.net.*;
-import java.io.*;
-import javax.swing.JOptionPane;
 import java.awt.Color;
+import java.io.IOException;
+import java.io.InterruptedIOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.net.ServerSocket;
+import java.net.Socket;
+import java.net.SocketException;
+import java.net.URL;
+
+import javax.swing.JOptionPane;
 
 /**
  *  This class inerits from player. It is involved in the network game.
@@ -635,7 +642,8 @@ public class NetworkPlayer extends Player {
     *  wait for a reply and generate an appropriate actionEvent based on it.
     *
     */
-   public void offerDraw( Player player )
+   @Override
+public void offerDraw( Player player )
    {
        
        // send the draw offer over the network
@@ -666,7 +674,8 @@ public class NetworkPlayer extends Player {
     * remote player and waitForPlayer.
     *
     */
-   public void acceptDraw( Player player ) {
+   @Override
+public void acceptDraw( Player player ) {
        // send the draw accept over the network
        try {
             out.writeObject( new Integer( ACCEPTDRAW ) );
@@ -693,7 +702,8 @@ public class NetworkPlayer extends Player {
     *
     * @param endMessage  Message indicating the end of the game.
     */
-   public void endOfGame(String endMessage){
+   @Override
+public void endOfGame(String endMessage){
        try {
             out.writeObject( new Integer( ENDOFGAME ) );
             out.writeObject( endMessage );
@@ -772,10 +782,12 @@ public class NetworkPlayer extends Player {
     
    // BELOW: TEMP METHODS FOR COMPILE
    
-   public void endInDeclineDraw( Player player ) {
+   @Override
+public void endInDeclineDraw( Player player ) {
    }
    
-   public void endInDraw( Player player ) {
+   @Override
+public void endInDraw( Player player ) {
    }
    
 }

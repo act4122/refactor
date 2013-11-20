@@ -11,9 +11,10 @@
  *
  */
 
-import java.awt.*;
-import java.net.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.net.URL;
+
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -102,15 +103,15 @@ public class Driver {
 		
 		// If game is networked tell networked player to send 
 		// the move
-		if ( gameType == theFacade.HOSTGAME 
-		     || gameType == theFacade.CLIENTGAME ) {
+		if ( gameType == Facade.HOSTGAME 
+		     || gameType == Facade.CLIENTGAME ) {
 		    ( (NetworkPlayer) activePlayer ).sendMove();
 		}
 	    }
 	} else if ( passivePlayer == player ) {
 	    // If game is networked, tell networked player to send move
-	    if ( gameType == theFacade.HOSTGAME 
-		 || gameType == theFacade.CLIENTGAME ) {
+	    if ( gameType == Facade.HOSTGAME 
+		 || gameType == Facade.CLIENTGAME ) {
 		((NetworkPlayer)activePlayer).sendMove();
 		((NetworkPlayer)activePlayer).waitForPlayer();
 	    }
@@ -244,7 +245,7 @@ public class Driver {
      * @param player The player declining the draw.
      */
     public void declineDraw( Player player ){
-	if ( gameType == theFacade.LOCALGAME ) {
+	if ( gameType == Facade.LOCALGAME ) {
 	    player.endInDeclineDraw( player );
 	} else {
 	    playerOne.endInDeclineDraw( player );
@@ -320,10 +321,10 @@ public class Driver {
     public void startGame(){
 	selectColors();
        
-	if ( gameType == theFacade.HOSTGAME ) {
+	if ( gameType == Facade.HOSTGAME ) {
 	    ( (NetworkPlayer)playerTwo).waitForConnect();
 	    //( (NetworkPlayer)playerTwo).waitForConnect();
-	} else if ( gameType == theFacade.CLIENTGAME ) {
+	} else if ( gameType == Facade.CLIENTGAME ) {
 	    //( (NetworkPlayer)playerOne).connectToHost();
 	    ( (NetworkPlayer)playerOne).connectToHost();
 	}

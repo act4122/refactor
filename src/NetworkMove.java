@@ -11,8 +11,7 @@
  *
  */
 
-import java.util.*;
-import java.io.*;
+import java.io.Serializable;
 
 /**
  * An object representation of a move, without a reference to the Player who
@@ -93,7 +92,8 @@ public class NetworkMove implements Serializable {
 	 *
 	 * @return a String representation for this object.
 	 */
-    public String toString() {
+    @Override
+	public String toString() {
 
         return ("Move.  startLoc = " + startingLocation + ", endLoc = "
                    + endingLocation);

@@ -15,11 +15,22 @@
  *
  */
 
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
-import java.util.*;
-import java.net.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Vector;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 
 /**
  *
@@ -453,7 +464,8 @@ public class CheckerGUI extends JFrame implements ActionListener{
     
 	//add window listener
 	addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent evt) {
+            @Override
+			public void windowClosing(WindowEvent evt) {
                 exitForm(evt);
             }
         }
@@ -1156,7 +1168,8 @@ public class CheckerGUI extends JFrame implements ActionListener{
      * @param e  the event that has occured
      */
     
-    public void actionPerformed( ActionEvent e ) {
+    @Override
+	public void actionPerformed( ActionEvent e ) {
         
 	try{
 	    //if a square gets clicked
@@ -1211,11 +1224,11 @@ public class CheckerGUI extends JFrame implements ActionListener{
 	    }else if( e.getSource().equals( theFacade ) ) {
 		
 		//if its a player switch event
-		if ( (e.getActionCommand()).equals(theFacade.playerSwitch) ) {
+		if ( (e.getActionCommand()).equals(Facade.playerSwitch) ) {
 		    //set a new time
 		    timeRemaining = theFacade.getTimer();
 		    //if it is an update event
-		} else if ( (e.getActionCommand()).equals(theFacade.update) ) {
+		} else if ( (e.getActionCommand()).equals(Facade.update) ) {
 		    //update the GUI
 		    update();
 		} else {
@@ -1268,7 +1281,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 		if( board.colorAt( i ) == Color.blue ){
 
 		    //if there is a  single piece there
-		    if((board.getPieceAt(i)).getType() == board.SINGLE){
+		    if((board.getPieceAt(i)).getType() == Board.SINGLE){
 
 			//show a blue single piece in that spot board
 			temp = (JButton)possibleSquares.get(i);
@@ -1282,7 +1295,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 			}
 
 			//if there is a kinged piece there
-		    }else if((board.getPieceAt(i)).getType() == board.KING ){
+		    }else if((board.getPieceAt(i)).getType() == Board.KING ){
 
 			//show a blue king piece in that spot board
 			temp= (JButton)possibleSquares.get(i);
@@ -1299,7 +1312,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 		}else if( board.colorAt( i ) == Color.white ){
 
 		    //if there is a single piece there
-		    if((board.getPieceAt(i)).getType() == board.SINGLE){
+		    if((board.getPieceAt(i)).getType() == Board.SINGLE){
 
 			//show a blue single piece in that spot board
 			temp = (JButton)possibleSquares.get(i);
@@ -1311,7 +1324,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 			}catch( Exception e ){}
 			
 			//if there is a kinged piece there
-		    }else if((board.getPieceAt(i)).getType() == board.KING ){
+		    }else if((board.getPieceAt(i)).getType() == Board.KING ){
 
 			//show a blue king piece in that spot board
 			temp = (JButton)possibleSquares.get(i);

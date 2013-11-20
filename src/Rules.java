@@ -11,8 +11,8 @@
  *
  */
 
-import java.util.*;
-import java.awt.*;
+import java.awt.Color;
+import java.util.Vector;
 
 /**
  * This class is used to check the validity
@@ -322,7 +322,7 @@ public class Rules {
 					      true, pieceType, player ) );
 	
 	// If the piece is a king.
-	if ( pieceType == theBoard.KING ) {       
+	if ( pieceType == Board.KING ) {       
 	    
 	    // King is on top wall.
             if ( piecePosition <= 7 ) {
@@ -479,7 +479,7 @@ public class Rules {
 						  true, pieceType, player ) );
 	    
 	    // If the piece is a king.
-	    if ( pieceType == theBoard.KING ) {
+	    if ( pieceType == Board.KING ) {
 		
 		// Check to see if piece is adjacent to piece of opposite color.
 		// If there are, add possible end locations to vector.
@@ -598,7 +598,7 @@ public class Rules {
 	Player player = aPlayer;
 
 	// If piece is a king
-	if ( theBoard.getPieceAt( piecePosition ).getType() == theBoard.KING ) {
+	if ( theBoard.getPieceAt( piecePosition ).getType() == Board.KING ) {
 	    //Check if piece is on wall. If it is it's movement is restricted.
 	    if ( leftWallPieces.contains( new Integer( piecePosition ) ) ||
                  rightWallPieces.contains( new Integer( piecePosition ) )) {
@@ -675,7 +675,7 @@ public class Rules {
 					      pieceType, player ) );
 	
 	// If the piece is a king.
-  	if ( pieceType == theBoard.KING ) {
+  	if ( pieceType == Board.KING ) {
   	    // Check to see if piece is adjacent to piece of opposite color.
   	    // If there are, add possible end locations to vector.
   	    for ( int i = 0; i <= adjacentSpots.length; i++ ) {
@@ -763,7 +763,7 @@ public class Rules {
 	    Player player = aPlayer;
 	    boolean endSpace = false;
 	    
-	    if ( pieceType == theBoard.KING ) {
+	    if ( pieceType == Board.KING ) {
 		if ( leftWallPieces.contains( new Integer( piecePosition ) ) ) {
 		    if ( jump ) {
 			adjacentSpace = theBoard.occupied( piecePosition - 7 );

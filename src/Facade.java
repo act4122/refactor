@@ -11,10 +11,11 @@
  *
  */
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
-import java.net.*;
+import java.awt.AWTEventMulticaster;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.net.URL;
 
 /**
  * An interface between the GUI and the kernel classes in a checkers game.

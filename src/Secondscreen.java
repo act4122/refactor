@@ -11,10 +11,24 @@
  *
  */
 
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.event.*;
+import java.awt.Checkbox;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 
 /**
@@ -90,7 +104,8 @@ public class Secondscreen extends JFrame
         getContentPane().setLayout(new GridBagLayout());
         GridBagConstraints gridBagConstraints1;
         addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent evt) {
+            @Override
+			public void windowClosing(WindowEvent evt) {
                 exitForm(evt);
             }
         }
@@ -229,11 +244,11 @@ public class Secondscreen extends JFrame
        
 	//determine what components should be disabled
 	//depending on the game mode
-	if ( gameType == theFacade.LOCALGAME ) {
-	} else if ( gameType == theFacade.HOSTGAME ) {
+	if ( gameType == Facade.LOCALGAME ) {
+	} else if ( gameType == Facade.HOSTGAME ) {
 	    playerTwoLabel.setEnabled( false );
 	    playerTwoField.setEnabled( false );
-	} else if ( gameType == theFacade.CLIENTGAME ) {
+	} else if ( gameType == Facade.CLIENTGAME ) {
 	    playerOneLabel.setEnabled( false );
 	    playerOneField.setEnabled( false );
 	    
@@ -251,7 +266,8 @@ public class Secondscreen extends JFrame
      * @param e the change event
      *
      */
-    public void stateChanged( ChangeEvent e ) {
+    @Override
+	public void stateChanged( ChangeEvent e ) {
 
         if ( e.getSource().equals( turnLengthField ) ) {
             turnLengthLabel.setText("Turn Length ( "
@@ -272,7 +288,8 @@ public class Secondscreen extends JFrame
      * @param the event fired
      */
     
-    public void actionPerformed( ActionEvent e ){
+    @Override
+	public void actionPerformed( ActionEvent e ){
 	try{
 	    
 	    if ( (e.getActionCommand()).equals( "ok" ) ) {

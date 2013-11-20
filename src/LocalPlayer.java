@@ -11,8 +11,7 @@
  *
  */
 
-import java.awt.*;
-import javax.swing.*;
+import javax.swing.JOptionPane;
 
 /**
  *  This class inherits from the player. 
@@ -38,7 +37,8 @@ public class LocalPlayer extends Player {
      * has been offered. An actionEvent is generated to let the GUI 
      * know.
      */
-    public void offerDraw( Player player ){
+    @Override
+	public void offerDraw( Player player ){
 	theDriver.drawOffered( this );
     }
     
@@ -48,7 +48,8 @@ public class LocalPlayer extends Player {
      * accepted.  An actionEvent is generated to let the GUI know and 
      * endGame is called in theDriver.
      */
-    public void acceptDraw( Player player ){
+    @Override
+	public void acceptDraw( Player player ){
 	
 	int selected = JOptionPane.showConfirmDialog( null, player.getName()
 		   	      + " has requested a draw."
@@ -69,7 +70,8 @@ public class LocalPlayer extends Player {
     /**
      *  Method is invoked if the other player declines a draw.
      */
-    public void endInDeclineDraw( Player player ){
+    @Override
+	public void endInDeclineDraw( Player player ){
 	
 	JOptionPane.showMessageDialog( null,
        	            player.getName() + " has declined the draw offer."
@@ -87,7 +89,8 @@ public class LocalPlayer extends Player {
      *
      * @param endMessage  Message indicating the end of the game.
      */
-    public void endOfGame( String endMessage ){
+    @Override
+	public void endOfGame( String endMessage ){
 	
 	JOptionPane.showMessageDialog( null,
                "Game has ended because: "
@@ -107,7 +110,8 @@ public class LocalPlayer extends Player {
      *
      * @param endMessage  Message indicating the end of the game.
      */
-    public void endInDraw( Player player ){
+    @Override
+	public void endInDraw( Player player ){
 	
 	// This display end of game dialog telling that a game has 
 	// ended in a draw

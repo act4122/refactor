@@ -10,10 +10,23 @@
  *   Initial creation of case study
  *
  */
-import java.net.*;
-import javax.swing.*;
-import java.awt.event.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.net.MalformedURLException;
+import java.net.URL;
+
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -75,7 +88,8 @@ public class Firstscreen extends JFrame implements ActionListener{
         getContentPane().setLayout(new java.awt.GridBagLayout());
         java.awt.GridBagConstraints gridBagConstraints1;
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
+            @Override
+			public void windowClosing(java.awt.event.WindowEvent evt) {
                 exitForm(evt);
             }
         }
@@ -197,6 +211,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 	 * 
 	 */
 	
+	@Override
 	public void actionPerformed( ActionEvent e ){
 		
 	    try{
@@ -222,38 +237,38 @@ public class Firstscreen extends JFrame implements ActionListener{
 		    if( tempButton.getActionCommand().equals( "local" ) ){
 			
 			//set up a local game
-			theFacade.setGameMode( theFacade.LOCALGAME );
+			theFacade.setGameMode( Facade.LOCALGAME );
 			
-			theFacade.createPlayer( 1, theFacade.LOCALGAME );
-			theFacade.createPlayer( 2, theFacade.LOCALGAME );
+			theFacade.createPlayer( 1, Facade.LOCALGAME );
+			theFacade.createPlayer( 2, Facade.LOCALGAME );
 			
 			//hide the Firstscreen, make a Secondscreen and show it
 			this.hide();
-			next = new Secondscreen( theFacade, this, theFacade.LOCALGAME );
+			next = new Secondscreen( theFacade, this, Facade.LOCALGAME );
 			next.show();
 			
 			//if the host game button is selected
 		    } else if( tempButton.getActionCommand().equals( "host" ) ){
 			
 			//set up to host a game
-			theFacade.setGameMode( theFacade.HOSTGAME );
+			theFacade.setGameMode( Facade.HOSTGAME );
 			
-			theFacade.createPlayer( 1, theFacade.HOSTGAME );
-			theFacade.createPlayer( 2, theFacade.HOSTGAME );
+			theFacade.createPlayer( 1, Facade.HOSTGAME );
+			theFacade.createPlayer( 2, Facade.HOSTGAME );
 			
 			//hide the Firstscreen, make the Secondscreen and show it
 			this.hide();
-			next = new Secondscreen( theFacade, this, theFacade.HOSTGAME );
+			next = new Secondscreen( theFacade, this, Facade.HOSTGAME );
 			next.show();
 			
 			//if the join game button is selected
 		    } else if( tempButton.getActionCommand().equals( "join" ) ){
 			
 			//set up to join a game
-			theFacade.setGameMode( theFacade.CLIENTGAME );
+			theFacade.setGameMode( Facade.CLIENTGAME );
 			
-			theFacade.createPlayer( 1, theFacade.CLIENTGAME );
-			theFacade.createPlayer( 2, theFacade.CLIENTGAME );
+			theFacade.createPlayer( 1, Facade.CLIENTGAME );
+			theFacade.createPlayer( 2, Facade.CLIENTGAME );
 			
 			//try to connect
 			try {
@@ -265,7 +280,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 			    
 			    //hide the Firstscreen, make and show the Second screen
 			    this.hide();
-			    next = new Secondscreen( theFacade, this, theFacade.CLIENTGAME );
+			    next = new Secondscreen( theFacade, this, Facade.CLIENTGAME );
 			    next.show();
                                         
 			    //catch any exceptions

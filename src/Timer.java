@@ -30,7 +30,7 @@ public class Timer extends Thread{
      * This constaructor creates a new timer
      */    
     public Timer(){
-	notifier = new Notifier( notifier.TIME_UPDATE );
+	notifier = new Notifier( Notifier.TIME_UPDATE );
 	interval = INTERVAL;
     }
     
@@ -40,7 +40,7 @@ public class Timer extends Thread{
      * @param inter - the new interval
      */
     public Timer( int inter ){
-	notifier = new Notifier( notifier.TIME_UPDATE );
+	notifier = new Notifier( Notifier.TIME_UPDATE );
 	interval = inter;
     }
     
@@ -50,7 +50,8 @@ public class Timer extends Thread{
      * 
      * @roseuid 3C5AE02D03DE
      */
-    public void run() {
+    @Override
+	public void run() {
 	// Start the timer thread 
 	// Notify the facade every interval
 	while ( true ) {

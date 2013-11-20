@@ -11,7 +11,7 @@
  *
  */
 
-import java.awt.*;
+import java.awt.Color;
 		   
 /**
 *  A class representation of the Player object.  This object
@@ -107,6 +107,7 @@ public abstract class Player {
      * @pre a game is in progress
      * @pre a draw has been offered
      */
+    //FIX THIS SHIT - DON'T NEED TO PASS IN PLAYER OBJECT
     public abstract void offerDraw( Player player ); 
     
     /**
@@ -192,7 +193,8 @@ public abstract class Player {
      * 
      * @return a String representation of this object.
      */
-    public String toString(){
+    @Override
+	public String toString(){
         return ("Player.  name = " + playerName);
     }
     

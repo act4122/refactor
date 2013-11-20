@@ -11,8 +11,6 @@
  *
  */
 
-import java.util.*;
-import java.io.*;
 
 /**
  * An object representation of a move.

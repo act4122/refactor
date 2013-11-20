@@ -10,8 +10,7 @@
  *   Initial creation of case study
  *
  */
-import java.awt.*;
-import java.util.*;
+import java.awt.Color;
 
 /**
  * This is a class representing a king piece (a piece that has been kinged)
@@ -42,7 +41,8 @@ public class KingPiece extends Piece {
     * 
     * @return 1 for the king piece representation
     */
-   public int getType() {
+   @Override
+public int getType() {
   
 	   return type;
    }

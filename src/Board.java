@@ -10,8 +10,8 @@
  *     Initial creation of case study
  *
  */
-import java.util.*;
-import java.awt.*;
+import java.awt.Color;
+import java.util.Vector;
 
 
 /**

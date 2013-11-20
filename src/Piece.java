@@ -19,13 +19,11 @@
  *
  */
 
-import java.util.*;
-import java.awt.*;
+import java.awt.Color;
 
 public abstract class Piece {
 	
    private Color color; // the color of the piece
-
       
    /**
     * The constructor for this piece
