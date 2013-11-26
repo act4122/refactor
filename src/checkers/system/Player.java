@@ -1,3 +1,4 @@
+package checkers.system;
 /**
  * Player.java
  *

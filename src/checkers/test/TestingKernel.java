@@ -1,3 +1,9 @@
+package checkers.test;
+
+import checkers.system.Board;
+import checkers.system.Driver;
+import checkers.system.Facade;
+import checkers.system.Player;
 /**
  * TestingKernel.java
  *

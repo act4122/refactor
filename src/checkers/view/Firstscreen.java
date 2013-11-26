@@ -1,3 +1,4 @@
+package checkers.view;
 /*
  * Firstscreen.java
  *
@@ -27,6 +28,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+
+import checkers.system.Facade;
 
 /**
  *

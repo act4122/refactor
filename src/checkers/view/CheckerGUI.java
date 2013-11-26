@@ -1,3 +1,4 @@
+package checkers.view;
 /*
  * CheckerGUI.java
  * 
@@ -31,6 +32,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import checkers.system.Board;
+import checkers.system.Facade;
 
 /**
  *

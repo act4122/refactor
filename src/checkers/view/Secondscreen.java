@@ -1,3 +1,4 @@
+package checkers.view;
 /*
  * Secondscreen.java
  *
@@ -29,6 +30,8 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+
+import checkers.system.Facade;
 
 
 /**

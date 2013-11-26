@@ -1,3 +1,6 @@
+package checkers.system;
+import checkers.view.Firstscreen;
+
 /*
 
  * PlayCheckers.java

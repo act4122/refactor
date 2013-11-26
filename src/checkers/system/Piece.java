@@ -1,3 +1,4 @@
+package checkers.system;
 /**
  * Piece.java
  *
@@ -41,7 +42,7 @@ public abstract class Piece {
     * 
     * @return the type of the piece
     */
-   abstract int getType();
+   public abstract int getType();
    
    /**
     * This method returns the color of this piece
