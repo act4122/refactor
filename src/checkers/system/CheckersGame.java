@@ -40,7 +40,6 @@ public class CheckersGame {
 	private Player  activePlayer;
 	private Player  passivePlayer;
 	private boolean runningTimer;
-	private Timer   theTimer;
 	private Rules   theRules;
 
 	public static int LOCALGAME  = 10000;
@@ -380,26 +379,6 @@ public class CheckersGame {
 		return gameType;
 	}
 
-	/**
-	 * Return the notifier of the Timer
-	 *
-	 * @return the notifier for the Timer
-	 *
-	 * @pre  The game is running
-	 * @post This method has changed nothing
-	 */
-	public Notifier getTimerNotifier(){
-		// Return the timers notifier, by asking the timer 
-		// for its notifier
-		Notifier timer = null;
-
-		if ( theTimer != null ) {
-			timer = theTimer.getNotifier();
-		}
-
-		return timer;
-	}
-
 
 	/** Below is the Copied methods from Facade.java */
 
@@ -558,42 +537,6 @@ public class CheckersGame {
 		}
 
 		return retString;
-	}
-
-
-	/**
-	 * Tell the kernel to set a time limit for each turn.  The time 
-	 * limit, i.e. the amount of time a player has during his turn 
-	 * before he is given a time warning, is specified by the parameter 
-	 * called time, in minutes.
-	 *
-	 * Tell the kernel to set a time limit for each turn.   The warning 
-	 * time, i.e. the amount of time a player has during his turn after 
-	 * he is given a time warning, is specified by the parameter called 
-	 * time, in minutes.
-	 * 
-	 * @param time the time limit for each turn, in seconds.
-	 *
-	 * @pre   10 <= time <= 300.
-	 */
-	public void setTimer( int time, int warning ) throws Exception{
-		// Checks to see that time is in between the necessary frame
-		// Sets time(class variable) to time(param value)
-		if( ( time == -1 ) || ( ( time >= 10 || time <= 300 ) 
-				&& ( warning >= 10 || warning <= 300 ) ) ){
-
-			timer       = time;
-			warningTime = warning;
-			if ( time < 0 ) {
-				runningTimer = false;
-			} else {
-				runningTimer = true;
-				theTimer = new Timer();
-			}
-
-		} else {
-			throw new Exception( "Invalid timer settings" );
-		}	   
 	}
 
 	/**

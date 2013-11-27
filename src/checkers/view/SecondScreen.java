@@ -21,7 +21,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
@@ -307,32 +306,32 @@ public class SecondScreen extends JPanel implements ActionListener, ChangeListen
 				game.setPlayerName( 1, playerOneField.getText() );
 				game.setPlayerName( 2, playerTwoField.getText() );
 
-				//if a timer is desired
-				if ( timedGameBox.isEnabled() ) {
-					if( timedGameBox.getState() ){
-
-						//set the 2 timer values
-						try {
-
-							game.setTimer( turnLengthField.getValue(),
-									warningLengthField.getValue() );
-
-						} catch ( Exception x ) {
-
-							JOptionPane.showMessageDialog( null,
-									"Invalid Timer value(s)",
-									"Error",
-									JOptionPane.INFORMATION_MESSAGE );
-						}
-						//else set timer values to a no timer constant
-					} else {
-						game.setTimer( -1, -1 );
-
-					}
-				} else {
-					game.setTimer( -1, -1 );
-
-				}
+//				//if a timer is desired
+//				if ( timedGameBox.isEnabled() ) {
+//					if( timedGameBox.getState() ){
+//
+//						//set the 2 timer values
+//						try {
+//
+//							game.setTimer( turnLengthField.getValue(),
+//									warningLengthField.getValue() );
+//
+//						} catch ( Exception x ) {
+//
+//							JOptionPane.showMessageDialog( null,
+//									"Invalid Timer value(s)",
+//									"Error",
+//									JOptionPane.INFORMATION_MESSAGE );
+//						}
+//						//else set timer values to a no timer constant
+//					} else {
+//						game.setTimer( -1, -1 );
+//
+//					}
+//				} else {
+//					game.setTimer( -1, -1 );
+//
+//				}
 
 				//start the game
 				game.startGame();

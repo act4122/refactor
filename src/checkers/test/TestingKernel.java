@@ -100,7 +100,7 @@ public class TestingKernel extends java.lang.Object{
             // Give a generous time.  At this point, it will allow 
             // adequate time for this program to run, but perform a 
             // basic test on the timer.
-            game.setTimer( testTime, ( testTime/2 ) );
+//            game.setTimer( testTime, ( testTime/2 ) );
         
             //Start the game.
             game.startGame();
