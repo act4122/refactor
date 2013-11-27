@@ -1,7 +1,6 @@
 package checkers.view;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
@@ -34,7 +33,6 @@ public class CheckersGUI extends JFrame implements ActionListener {
 		
 		pack();
 		setVisible(true);
-		System.out.println(firstScreen.size() + " And " + firstScreen.getInsets());
 	}
 	
 	private void initComponents() {
