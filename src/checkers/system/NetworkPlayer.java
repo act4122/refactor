@@ -73,7 +73,7 @@ public class NetworkPlayer extends Player {
    /**
     *  Constructor that creates a default object of this class
     */
-   public NetworkPlayer( int playerNum, Rules rules, Driver theDriver ) {
+   public NetworkPlayer( int playerNum, Rules rules, CheckersGame theDriver ) {
 
     	// call super classes (player) constructor to give it starting info
     	super( playerNum, rules, theDriver );

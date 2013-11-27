@@ -27,7 +27,7 @@ public class LocalPlayer extends Player {
     /**
      * This is a default constructor for this object
      */
-    public LocalPlayer( int num, Rules rules, Driver theDriver ){
+    public LocalPlayer( int num, Rules rules, CheckersGame theDriver ){
 	super( num, rules, theDriver );
 	type = Player.LOCALPLAYER;
     }

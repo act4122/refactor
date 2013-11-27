@@ -28,7 +28,7 @@ import java.util.Vector;
 public class Rules {
     
     private Board theBoard; // The board
-    private Driver theDriver; // The driver controlling the program.
+    private CheckersGame theDriver; // The driver controlling the program.
     private Move currentMove; // The current move in the game.
     private int adjacentSpots[] = { -9, -7, 7, 9 }; // An array of adjacent
                                                     // spots to check.
@@ -47,7 +47,7 @@ public class Rules {
      * @param board - the checker board.
      * @param driver - the main driver of the program.
      */
-    public Rules( Board board, Driver driver ) {
+    public Rules( Board board, CheckersGame driver ) {
 	
 	theBoard = board;
 	theDriver = driver;

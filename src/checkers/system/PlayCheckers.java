@@ -32,22 +32,22 @@ import checkers.view.Firstscreen;
  *
  */
 class PlayCheckers{
-	
+
 	/*
-	* The main method to play checkers
-	*
-	*@param args[] the command line arguments
-	* 
-	*/
-	
-    public static void main( String args[] ){
-	
-	
-	Driver theDriver = new Driver();
-	
-	Firstscreen first = new Firstscreen( theDriver.getFacade() );
-	first.show();
-	
-    }
-    
+	 * The main method to play checkers
+	 *
+	 *@param args[] the command line arguments
+	 * 
+	 */
+
+	public static void main( String args[] ){
+
+
+		CheckersGame game = new CheckersGame();
+
+		Firstscreen first = new Firstscreen( game );
+		first.setVisible(true);
+
+	}
+
 }//PlayCheckers

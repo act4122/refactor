@@ -32,7 +32,7 @@ public abstract class Player {
     // once a move has been made.
     protected Rules  theRules;	
 
-    protected Driver theDriver;
+    protected CheckersGame theDriver;
     
     // Instance of the move class which will be
     // created when a user makes a move.
@@ -51,7 +51,7 @@ public abstract class Player {
      * @param newRules  The rules used to validate moves.
      * @param newDriver Driver which will control this.     
      */
-    public Player( int num, Rules newRules, Driver newDriver ){
+    public Player( int num, Rules newRules, CheckersGame newDriver ){
 	playerName   = null;
 	playerColor  = null;
 	playerNumber = num;

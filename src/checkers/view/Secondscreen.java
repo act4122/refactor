@@ -31,7 +31,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-import checkers.system.Facade;
+import checkers.system.CheckersGame;
 
 
 /**
@@ -45,7 +45,7 @@ import checkers.system.Facade;
 public class Secondscreen extends JFrame
     implements ActionListener, ChangeListener {
     
-    private Facade theFacade;
+    private CheckersGame game;
     private Firstscreen theFirst;
     private int gameType;
     
@@ -74,10 +74,10 @@ public class Secondscreen extends JFrame
      * 
      */
     
-    public Secondscreen( Facade f, Firstscreen first, int type ) {
+    public Secondscreen( CheckersGame game, Firstscreen first, int type ) {
 
         super( "Second Screen" );
-        theFacade = f;
+        this.game = game;
         theFirst = first;
         gameType = type;
         
@@ -247,11 +247,11 @@ public class Secondscreen extends JFrame
        
 	//determine what components should be disabled
 	//depending on the game mode
-	if ( gameType == Facade.LOCALGAME ) {
-	} else if ( gameType == Facade.HOSTGAME ) {
+	if ( gameType == CheckersGame.LOCALGAME ) {
+	} else if ( gameType == CheckersGame.HOSTGAME ) {
 	    playerTwoLabel.setEnabled( false );
 	    playerTwoField.setEnabled( false );
-	} else if ( gameType == Facade.CLIENTGAME ) {
+	} else if ( gameType == CheckersGame.CLIENTGAME ) {
 	    playerOneLabel.setEnabled( false );
 	    playerOneField.setEnabled( false );
 	    
@@ -310,8 +310,8 @@ public class Secondscreen extends JFrame
 		    }
 		}
 		
-		theFacade.setPlayerName( 1, playerOneField.getText() );
-		theFacade.setPlayerName( 2, playerTwoField.getText() );
+		game.setPlayerName( 1, playerOneField.getText() );
+		game.setPlayerName( 2, playerTwoField.getText() );
 		
 		//if a timer is desired
 		if ( timedGameBox.isEnabled() ) {
@@ -320,7 +320,7 @@ public class Secondscreen extends JFrame
 			//set the 2 timer values
 			try {
 			   
-			    theFacade.setTimer( turnLengthField.getValue(),
+			    game.setTimer( turnLengthField.getValue(),
 						warningLengthField.getValue() );
 			    
 			} catch ( Exception x ) {
@@ -332,20 +332,20 @@ public class Secondscreen extends JFrame
 			}
 			//else set timer values to a no timer constant
 		    } else {
-			theFacade.setTimer( -1, -1 );
+			game.setTimer( -1, -1 );
 			
 		    }
 		} else {
-		    theFacade.setTimer( -1, -1 );
+		    game.setTimer( -1, -1 );
 		   
 		}
 		
 		//start the game
-		theFacade.startGame();
+		game.startGame();
 		//hide this screen, make and show the GUI
 		this.hide();
-		CheckerGUI GUI = new CheckerGUI( theFacade, theFacade.getPlayerName( 1 ),
-						 theFacade.getPlayerName( 2 ) );
+		CheckerGUI GUI = new CheckerGUI( game, game.getPlayerName( 1 ),
+						 game.getPlayerName( 2 ) );
 		GUI.show();
 		
 		//if they hit cancel go to the previous screen
