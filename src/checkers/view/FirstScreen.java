@@ -13,19 +13,19 @@ package checkers.view;
  */
 import java.awt.Color;
 import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ButtonModel;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -37,10 +37,11 @@ import checkers.system.CheckersGame;
  * @version 
  */
 
-public class Firstscreen extends JFrame implements ActionListener{
+@SuppressWarnings("serial")
+public class FirstScreen extends JPanel implements ActionListener{
 
-	CheckersGame game;
-	Secondscreen next;
+	private CheckersGame game;
+	public static final String TITLE = "First Screen";
 
 	// Variables declaration - do not modify
 	private JRadioButton LocalGameButton;
@@ -48,8 +49,8 @@ public class Firstscreen extends JFrame implements ActionListener{
 	private JRadioButton JoinGameButton;
 	private JTextField IPField;
 	private JLabel IPLabel;
-	private JButton OKButton;
-	private JButton CancelButton;
+	protected JButton OKButton;
+	protected JButton CancelButton;
 	private JLabel IPExampleLabel;
 	private ButtonGroup gameModes;
 	// End of variables declaration
@@ -62,12 +63,11 @@ public class Firstscreen extends JFrame implements ActionListener{
 	 *     
 	 */
 
-	public Firstscreen( CheckersGame facade ) {
+	public FirstScreen( CheckersGame game ) {
 
-		super( "First screen" );
-		game = facade;
+		super( new GridBagLayout());
+		this.game = game;
 		initComponents();
-		pack();
 	}
 
 
@@ -88,15 +88,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		OKButton = new JButton();
 		CancelButton = new JButton();
 		IPExampleLabel = new JLabel();
-		getContentPane().setLayout(new java.awt.GridBagLayout());
 		java.awt.GridBagConstraints gridBagConstraints1;
-		addWindowListener(new java.awt.event.WindowAdapter() {
-			@Override
-			public void windowClosing(java.awt.event.WindowEvent evt) {
-				exitForm(evt);
-			}
-		}
-				);
 
 		gameModes.add(LocalGameButton);
 		gameModes.add(HostGameButton);
@@ -110,7 +102,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1 = new GridBagConstraints();
 		gridBagConstraints1.gridx = 1;
 		gridBagConstraints1.gridy = 0;
-		getContentPane().add(LocalGameButton, gridBagConstraints1);
+		add(LocalGameButton, gridBagConstraints1);
 
 
 		HostGameButton.setActionCommand("host");
@@ -120,7 +112,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1 = new GridBagConstraints();
 		gridBagConstraints1.gridx = 1;
 		gridBagConstraints1.gridy = 1;
-		getContentPane().add(HostGameButton, gridBagConstraints1);
+		add(HostGameButton, gridBagConstraints1);
 
 
 		JoinGameButton.setActionCommand("join");
@@ -130,7 +122,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1 = new java.awt.GridBagConstraints();
 		gridBagConstraints1.gridx = 1;
 		gridBagConstraints1.gridy = 2;
-		getContentPane().add(JoinGameButton, gridBagConstraints1);
+		add(JoinGameButton, gridBagConstraints1);
 
 
 		IPField.setBackground( Color.white );
@@ -143,7 +135,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1 = new GridBagConstraints();
 		gridBagConstraints1.gridx = 2;
 		gridBagConstraints1.gridy = 3;
-		getContentPane().add(IPField, gridBagConstraints1);
+		add(IPField, gridBagConstraints1);
 
 		IPLabel.setName("label10");
 		IPLabel.setBackground(new Color (204, 204, 204));
@@ -153,7 +145,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1 = new GridBagConstraints();
 		gridBagConstraints1.gridx = 1;
 		gridBagConstraints1.gridy = 3;
-		getContentPane().add(IPLabel, gridBagConstraints1);
+		add(IPLabel, gridBagConstraints1);
 
 		OKButton.setText("OK");
 		OKButton.setActionCommand("ok");
@@ -166,7 +158,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1.gridx = 2;
 		gridBagConstraints1.gridy = 5;
 		gridBagConstraints1.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(OKButton, gridBagConstraints1);
+		add(OKButton, gridBagConstraints1);
 
 		CancelButton.setText("Cancel");
 		CancelButton.setActionCommand("cancel");
@@ -179,7 +171,7 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1.gridx = 3;
 		gridBagConstraints1.gridy = 5;
 		gridBagConstraints1.insets = new Insets(30, 0, 0, 0);
-		getContentPane().add(CancelButton, gridBagConstraints1);
+		add(CancelButton, gridBagConstraints1);
 
 		IPExampleLabel.setName("label11");
 		IPExampleLabel.setBackground(new Color (204, 204, 204));
@@ -189,21 +181,18 @@ public class Firstscreen extends JFrame implements ActionListener{
 		gridBagConstraints1 = new GridBagConstraints();
 		gridBagConstraints1.gridx = 2;
 		gridBagConstraints1.gridy = 4;
-		getContentPane().add(IPExampleLabel, gridBagConstraints1);
+		add(IPExampleLabel, gridBagConstraints1);
 
 
 	}
-
-	/**
-	 *  
-	 * Exit the Application
-	 * 
-	 * @param the event to close the window
-	 * 
-	 */
-
-	private void exitForm(WindowEvent evt) {
-		System.exit (0);
+	
+	
+	public void addOKListener(ActionListener al) {
+		OKButton.addActionListener(al);
+	}
+	
+	public void addCancelListener(ActionListener al) {
+		CancelButton.addActionListener(al);
 	}
 
 	/**
@@ -245,11 +234,6 @@ public class Firstscreen extends JFrame implements ActionListener{
 					game.createPlayer( 1, CheckersGame.LOCALGAME );
 					game.createPlayer( 2, CheckersGame.LOCALGAME );
 
-					//hide the Firstscreen, make a Secondscreen and show it
-					this.hide();
-					next = new Secondscreen( game, this, CheckersGame.LOCALGAME );
-					next.show();
-
 					//if the host game button is selected
 				} else if( tempButton.getActionCommand().equals( "host" ) ){
 
@@ -258,11 +242,6 @@ public class Firstscreen extends JFrame implements ActionListener{
 
 					game.createPlayer( 1, CheckersGame.HOSTGAME );
 					game.createPlayer( 2, CheckersGame.HOSTGAME );
-
-					//hide the Firstscreen, make the Secondscreen and show it
-					this.hide();
-					next = new Secondscreen( game, this, CheckersGame.HOSTGAME );
-					next.show();
 
 					//if the join game button is selected
 				} else if( tempButton.getActionCommand().equals( "join" ) ){
@@ -280,11 +259,6 @@ public class Firstscreen extends JFrame implements ActionListener{
 						URL address = new URL( "http://" + IPField.getText() );
 						//set the host
 						game.setHost( address );
-
-						//hide the Firstscreen, make and show the Second screen
-						this.hide();
-						next = new Secondscreen( game, this, CheckersGame.CLIENTGAME );
-						next.show();
 
 						//catch any exceptions
 					} catch ( MalformedURLException x ) {

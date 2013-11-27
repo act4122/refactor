@@ -413,11 +413,10 @@ public class CheckersGame {
 	 */
 	public int whosTurn(){
 
-		// Return the integer value of the activePlayer object
-		int turn;
-		turn = activePlayer.getNumber();
-
-		return turn;
+		if (activePlayer != null) {
+			activePlayer.getNumber();
+		}
+		return 0;
 	}
 
 	/**
