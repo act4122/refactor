@@ -22,18 +22,20 @@ package checkers.system;
 
 import java.awt.Color;
 
-public abstract class Piece {
+public class Piece {
 	
    private Color color; // the color of the piece
+   public enum TYPE { SINGLE, KING };
+   private TYPE type;
       
    /**
     * The constructor for this piece
     * 
     * @param c - the color for this piece
     */
-   public Piece( Color c ) {
+   public Piece( TYPE type, Color c ) {
 
-	   // set the color
+	   this.type = type;
 	   color = c;
    }
 
@@ -42,7 +44,9 @@ public abstract class Piece {
     * 
     * @return the type of the piece
     */
-   public abstract int getType();
+   public TYPE getType() {
+	   return type;
+   }
    
    /**
     * This method returns the color of this piece

@@ -35,6 +35,7 @@ import javax.swing.JLabel;
 
 import checkers.system.Board;
 import checkers.system.CheckersGame;
+import checkers.system.Piece;
 
 /**
  *
@@ -1285,7 +1286,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 				if( board.colorAt( i ) == Color.blue ){
 
 					//if there is a  single piece there
-					if((board.getPieceAt(i)).getType() == Board.SINGLE){
+					if((board.getPieceAt(i)).getType() == Piece.TYPE.SINGLE){
 
 						//show a blue single piece in that spot board
 						temp = (JButton)possibleSquares.get(i);
@@ -1299,7 +1300,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 						}
 
 						//if there is a kinged piece there
-					}else if((board.getPieceAt(i)).getType() == Board.KING ){
+					}else if((board.getPieceAt(i)).getType() == Piece.TYPE.KING ){
 
 						//show a blue king piece in that spot board
 						temp= (JButton)possibleSquares.get(i);
@@ -1316,7 +1317,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 				}else if( board.colorAt( i ) == Color.white ){
 
 					//if there is a single piece there
-					if((board.getPieceAt(i)).getType() == Board.SINGLE){
+					if((board.getPieceAt(i)).getType() == Piece.TYPE.SINGLE){
 
 						//show a blue single piece in that spot board
 						temp = (JButton)possibleSquares.get(i);
@@ -1328,7 +1329,7 @@ public class CheckerGUI extends JFrame implements ActionListener{
 						}catch( Exception e ){}
 
 						//if there is a kinged piece there
-					}else if((board.getPieceAt(i)).getType() == Board.KING ){
+					}else if((board.getPieceAt(i)).getType() == Piece.TYPE.KING ){
 
 						//show a blue king piece in that spot board
 						temp = (JButton)possibleSquares.get(i);
