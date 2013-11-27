@@ -24,6 +24,7 @@ import java.awt.event.ActionListener;
  *
  *  @author
  */
+@SuppressWarnings("serial")
 public class Notifier extends Component {
 
     public final static String TIME_UPDATE = "time update";

@@ -22,7 +22,8 @@ import java.io.Serializable;
  */
 public class NetworkMove implements Serializable {
 
-    private int startingLocation;	// the starting location
+	private static final long serialVersionUID = 1L;
+	private int startingLocation;	// the starting location
 	private int endingLocation;  	// the ending location
 
 	/**

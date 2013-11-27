@@ -60,7 +60,7 @@ public class TestingKernel extends java.lang.Object{
         // Create the instance of the testing kernel.
         // Pass to it as a parameter the driver you just made.
         // This is turn should begin execution of the program.
-        TestingKernel tester = new TestingKernel( sampleDriver );
+        new TestingKernel( sampleDriver );
     }
     
     /**

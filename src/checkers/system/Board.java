@@ -12,8 +12,8 @@ package checkers.system;
  *
  */
 import java.awt.Color;
-import java.util.Vector;
-
+import java.util.ArrayList;
+import java.util.List;
 import checkers.system.Piece.TYPE;
 
 
@@ -280,14 +280,14 @@ public class Board {
     * 
     * @return blue pieces on the board
     */
-   public Vector bluePieces() {
+   public List<Piece> bluePieces() {
    
-      Vector bluePieces = new Vector();
+      List<Piece> bluePieces = new ArrayList<Piece>();
       
       for ( int i = 0; i < 64; i++ ) {
           if ( occupied( i ) ) {
               if ( pieces[ i ].getColor() == Color.blue ) {
-                  bluePieces.addElement( pieces[ i ] );
+                  bluePieces.add( pieces[ i ] );
               }
           }                 
       }
@@ -302,14 +302,14 @@ public class Board {
     * 
     * @return white pieces on the board
     */
-  public Vector whitePieces() {
+  public List<Piece> whitePieces() {
       
-      Vector whitePieces = new Vector();
+      List<Piece> whitePieces = new ArrayList<Piece>();
       
       for ( int i = 0; i < 64; i++ ) {
           if ( occupied( i ) ) {
               if ( pieces[ i ].getColor() == Color.white ) {
-                  whitePieces.addElement( pieces[ i ] );
+                  whitePieces.add( pieces[ i ] );
               }
           }                 
       }

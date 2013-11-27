@@ -64,10 +64,8 @@ public class NetworkPlayer extends Player {
    private ObjectInputStream in = null;
 
    // Where we temporarily store input received and future output
-   private Object inputObj = null, outputObj = null;
+   private Object inputObj = null;
 
-   // The address to connect to when we are a remote computer
-   private URL IP = null;
 
     
    /**
@@ -483,7 +481,6 @@ public class NetworkPlayer extends Player {
    public Integer processCommand( int command ) {
         Integer result = new Integer( ROGER );
         int answer = 0;
-        String resignMessage = null;
         System.out.println( "Entered processCommand." );
         
         // If a draw offer is recieved, fire off an action event to inform the

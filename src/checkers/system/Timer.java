@@ -23,58 +23,58 @@ package checkers.system;
 
 public class Timer extends Thread{
 
-    private static int INTERVAL = 100;    
-    private int      interval;
-    private Notifier notifier;
-    
-    /**
-     * This constaructor creates a new timer
-     */    
-    public Timer(){
-	notifier = new Notifier( Notifier.TIME_UPDATE );
-	interval = INTERVAL;
-    }
-    
-    /**
-     * This constructor creates a timer with an interval
-     *
-     * @param inter - the new interval
-     */
-    public Timer( int inter ){
-	notifier = new Notifier( Notifier.TIME_UPDATE );
-	interval = inter;
-    }
-    
-    /**
-     * This method is what executes then the thread
-     * has been started
-     * 
-     * @roseuid 3C5AE02D03DE
-     */
-    @Override
-	public void run() {
-	// Start the timer thread 
-	// Notify the facade every interval
-	while ( true ) {
-	    try {
-		sleep( interval );
-	    }
-	    catch ( InterruptedException e ) {
-		System.err.println( "The timer malfunctioned." );
-	    }
-	    
-	    notifier.generateActionPerformed();
+	private static int INTERVAL = 100;    
+	private int      interval;
+	private Notifier notifier;
+
+	/**
+	 * This constaructor creates a new timer
+	 */    
+	public Timer(){
+		notifier = new Notifier( Notifier.TIME_UPDATE );
+		interval = INTERVAL;
 	}
-    }
-    
-    /**
-     * Get the notifier.
-     * 
-     * @return Notifier
-     * @roseuid 3C5AE4FD00C1
-     */
-    public Notifier getNotifier(){
-	return notifier;
-    }
-    
+
+	/**
+	 * This constructor creates a timer with an interval
+	 *
+	 * @param inter - the new interval
+	 */
+	public Timer( int inter ){
+		notifier = new Notifier( Notifier.TIME_UPDATE );
+		interval = inter;
+	}
+
+	/**
+	 * This method is what executes then the thread
+	 * has been started
+	 * 
+	 * @roseuid 3C5AE02D03DE
+	 */
+	@Override
+	public void run() {
+		// Start the timer thread 
+		// Notify the facade every interval
+		while ( true ) {
+			try {
+				sleep( interval );
+			}
+			catch ( InterruptedException e ) {
+				System.err.println( "The timer malfunctioned." );
+			}
+
+			notifier.generateActionPerformed();
+		}
+	}
+
+	/**
+	 * Get the notifier.
+	 * 
+	 * @return Notifier
+	 * @roseuid 3C5AE4FD00C1
+	 */
+	public Notifier getNotifier(){
+		return notifier;
+	}
+
 }// Timer.java

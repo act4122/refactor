@@ -484,7 +484,7 @@ public class CheckersGame {
 		if( startSpace != 99 && endSpace!= 99 ){
 			// Takes the information of a move and calls makeMove() 
 			// in a localPlayer
-			boolean result = activePlayer.makeMove( startSpace, endSpace );
+			activePlayer.makeMove( startSpace, endSpace );
 		}
 
 		// Reset startSpace and endSpace to 99
@@ -543,7 +543,7 @@ public class CheckersGame {
 			if( playerNum == 1 || playerNum == 2 ){
 				// checks both Player objects to see which one is 
 				// associated with the legal number returns the name of 
-				// the player asscociated with the number
+				// the player associated with the number
 				if( activePlayer.getNumber() == playerNum ){
 					retString = activePlayer.getName();
 				}else{
