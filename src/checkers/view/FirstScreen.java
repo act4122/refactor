@@ -30,6 +30,7 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 import checkers.system.CheckersGame;
+import checkers.system.CheckersGame.GameType;
 
 /**
  *
@@ -229,28 +230,28 @@ public class FirstScreen extends JPanel implements ActionListener{
 				if( tempButton.getActionCommand().equals( "local" ) ){
 
 					//set up a local game
-					game.setGameMode( CheckersGame.LOCALGAME );
+					game.setGameMode( CheckersGame.GameType.Local );
 					
-					game.createPlayer( 1, CheckersGame.LOCALGAME );
-					game.createPlayer( 2, CheckersGame.LOCALGAME );
+					game.createPlayer( 1, GameType.Local );
+					game.createPlayer( 2, GameType.Local );
 
 					//if the host game button is selected
 				} else if( tempButton.getActionCommand().equals( "host" ) ){
 
 					//set up to host a game
-					game.setGameMode( CheckersGame.HOSTGAME );
+					game.setGameMode( GameType.NetworkHost );
 
-					game.createPlayer( 1, CheckersGame.HOSTGAME );
-					game.createPlayer( 2, CheckersGame.HOSTGAME );
+					game.createPlayer( 1, GameType.NetworkHost );
+					game.createPlayer( 2, GameType.NetworkHost );
 
 					//if the join game button is selected
 				} else if( tempButton.getActionCommand().equals( "join" ) ){
 
 					//set up to join a game
-					game.setGameMode( CheckersGame.CLIENTGAME );
+					game.setGameMode( GameType.NetworkClient );
 
-					game.createPlayer( 1, CheckersGame.CLIENTGAME );
-					game.createPlayer( 2, CheckersGame.CLIENTGAME );
+					game.createPlayer( 1, GameType.NetworkClient );
+					game.createPlayer( 2, GameType.NetworkClient );
 
 					//try to connect
 					try {

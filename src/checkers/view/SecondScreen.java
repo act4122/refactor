@@ -19,6 +19,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -28,6 +29,7 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 import checkers.system.CheckersGame;
+import checkers.system.CheckersGame.GameType;
 
 
 /**
@@ -230,20 +232,26 @@ public class SecondScreen extends JPanel implements ActionListener, ChangeListen
 
 		//determine what components should be disabled
 		//depending on the game mode
-		int gameType = game.getGameMode();
-		if ( gameType == CheckersGame.LOCALGAME ) {
-		} else if ( gameType == CheckersGame.HOSTGAME ) {
-			playerTwoLabel.setEnabled( false );
-			playerTwoField.setEnabled( false );
-		} else if ( gameType == CheckersGame.CLIENTGAME ) {
-			playerOneLabel.setEnabled( false );
-			playerOneField.setEnabled( false );
-
+		GameType gameType = game.getGameMode();
+		
+		switch (gameType)
+		{
+		case NetworkHost:
+			playerTwoLabel.setEnabled(false);
+			playerTwoField.setEnabled(false);
+			break;
+		case NetworkClient:
+			playerOneLabel.setEnabled(false);
+			playerOneField.setEnabled(false);
 			timedGameBox.setEnabled( false );
 			turnLengthLabel.setEnabled( false );
 			WarningLengthLabel.setEnabled( false );
 			turnLengthField.setEnabled( false );
 			warningLengthField.setEnabled( false );
+			break;
+		case Local:
+		default:
+				break;
 		}
 	}
 	

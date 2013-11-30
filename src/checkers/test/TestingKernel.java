@@ -2,7 +2,8 @@ package checkers.test;
 
 import checkers.system.Board;
 import checkers.system.CheckersGame;
-import checkers.system.Player;
+import checkers.system.CheckersGame.GameType;
+import checkers.system.Player.PlayerType;
 /**
  * TestingKernel.java
  *
@@ -86,12 +87,12 @@ public class TestingKernel extends java.lang.Object{
         
         try{
             // Set this game to be a local game.
-            game.setGameMode( CheckersGame.LOCALGAME );
+            game.setGameMode( GameType.Local );
         
             // Create players
             // createPlayer(int num, int type, String name)
-            game.createPlayer( 1, Player.LOCALPLAYER, playerOne );
-            game.createPlayer( 2, Player.LOCALPLAYER, playerTwo );
+            game.createPlayer( 1, PlayerType.LOCALPLAYER, playerOne );
+            game.createPlayer( 2, PlayerType.LOCALPLAYER, playerTwo );
             
             // Set the names for the players.
             game.setPlayerName( 1, playerOne );

@@ -20,6 +20,8 @@ import java.net.URL;
 
 import javax.swing.JOptionPane;
 
+import checkers.system.Player.PlayerType;
+
 /**
  *
  * This class is a part of the main functionality of the checkers 
@@ -34,17 +36,20 @@ import javax.swing.JOptionPane;
 
 public class CheckersGame {
 
+	public enum GameType
+	{
+		Local,
+		NetworkHost,
+		NetworkClient
+	}
+	
 	private Player  playerOne;
 	private Player  playerTwo;
-	private int     gameType;
+	private GameType     gameType;
 	private Player  activePlayer;
 	private Player  passivePlayer;
 	private boolean runningTimer;
 	private Rules   theRules;
-
-	public static int LOCALGAME  = 10000;
-	public static int HOSTGAME   = 20000;
-	public static int CLIENTGAME = 30000;
 
 	public static String update       = "update";
 	public static String playerSwitch = "switch";
@@ -113,21 +118,21 @@ public class CheckersGame {
 
 				// If game is networked tell networked player to send 
 				// the move
-				if ( gameType == CheckersGame.HOSTGAME 
-						|| gameType == CheckersGame.CLIENTGAME ) {
+				if ( gameType == GameType.NetworkHost
+						|| gameType == GameType.NetworkClient ) {
 					( (NetworkPlayer) activePlayer ).sendMove();
 				}
 			}
 		} else if ( passivePlayer == player ) {
 			// If game is networked, tell networked player to send move
-			if ( gameType == CheckersGame.HOSTGAME 
-					|| gameType == CheckersGame.CLIENTGAME ) {
+			if ( gameType == GameType.NetworkHost 
+					|| gameType == GameType.NetworkClient ) {
 				((NetworkPlayer)activePlayer).sendMove();
 				((NetworkPlayer)activePlayer).waitForPlayer();
 			}
 
 			// Inform the other player to make a move and
-			// tell facade to update any listining GUIs and
+			// tell facade to update any listening GUIs and
 			// reset the timer
 
 			Player tempHold = activePlayer;
@@ -172,13 +177,13 @@ public class CheckersGame {
 	 * @pre   less than 2 players exist
 	 * @post  a player with correct name has been created  
 	 */
-	public void createPlayer( int num, int type, String name ){
+	public void createPlayer( int num, PlayerType type, String name ){
 		Player temp = null;
 
-		if ( type == Player.LOCALPLAYER ) {
+		if ( type == PlayerType.LOCALPLAYER ) {
 			temp = new LocalPlayer( num, theRules, this );
 			temp.setName( name );
-		} else if ( type == Player.NETWORKPLAYER ) {
+		} else if ( type == PlayerType.NETWORKPLAYER ) {
 			temp = new NetworkPlayer( num, theRules, this );
 			temp.setName( name );
 		}
@@ -255,7 +260,7 @@ public class CheckersGame {
 	 * @param player The player declining the draw.
 	 */
 	public void declineDraw( Player player ){
-		if ( gameType == CheckersGame.LOCALGAME ) {
+		if ( gameType == GameType.Local ) {
 			player.endInDeclineDraw( player );
 		} else {
 			playerOne.endInDeclineDraw( player );
@@ -304,10 +309,10 @@ public class CheckersGame {
 	public void startGame(){
 		selectColors();
 
-		if ( gameType == CheckersGame.HOSTGAME ) {
+		if ( gameType == GameType.NetworkHost ) {
 			( (NetworkPlayer)playerTwo).waitForConnect();
 			//( (NetworkPlayer)playerTwo).waitForConnect();
-		} else if ( gameType == CheckersGame.CLIENTGAME ) {
+		} else if ( gameType == GameType.NetworkClient ) {
 			//( (NetworkPlayer)playerOne).connectToHost();
 			( (NetworkPlayer)playerOne).connectToHost();
 		}
@@ -375,7 +380,7 @@ public class CheckersGame {
 	 * @pre  Game has started
 	 * @post This method has changed nothing
 	 */
-	public int getGameMode(){
+	public GameType getGameMode(){
 		return gameType;
 	}
 
@@ -561,16 +566,13 @@ public class CheckersGame {
 	 * @pre we are in the setup for a game
 	 * 
 	 */
-	public void setGameMode( int mode ) throws Exception{
-		// Check to make sure that mode is a legal value
-		// Call setGameMode() in driver class passing it 
-		// the legal mode.  If mode is not a legal value 
-		// an exception will be thrown
-		if( mode == LOCALGAME || mode == HOSTGAME || mode == CLIENTGAME ){
-			gameType = mode;
-		}else {
-			throw new Exception( "Invalid Game Mode" );
-		}
+	public void setGameMode( GameType p_gameMode )
+	{
+		/*
+		 * Removed the stupid checks because the GameType is a
+		 * Typed enum now
+		 */
+		gameType = p_gameMode;
 	}
 
 	/**
@@ -675,12 +677,12 @@ public class CheckersGame {
 	 * @param num  Int for player number (either 1 or 2)
 	 * @param type Int for type of player (Local, network, etc.)
 	 */
-	public void createPlayer( int num, int type ) {
+	public void createPlayer( int num, GameType type ) {
 
-		if ( type == HOSTGAME || type == CLIENTGAME ) {
-			createPlayer( num, Player.NETWORKPLAYER, "UnNamedPlayer" );
+		if ( type == GameType.NetworkClient || type == GameType.NetworkHost ) {
+			createPlayer( num, PlayerType.NETWORKPLAYER, "UnNamedPlayer" );
 		} else {
-			createPlayer( num, Player.LOCALPLAYER, "UnNamedPlayer" );
+			createPlayer( num, PlayerType.LOCALPLAYER, "UnNamedPlayer" );
 		}
 	}
 

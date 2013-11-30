@@ -40,7 +40,6 @@ public class NetworkPlayer extends Player {
    private static int ENDOFGAME = 4;
    private static int ROGER = 90;
    private static int RESEND = 98;
-   private static int NETWORKPLAYER = 1;
 
    // The port number we will read from
    private static int PORTNUM = 1051;
@@ -75,7 +74,7 @@ public class NetworkPlayer extends Player {
 
     	// call super classes (player) constructor to give it starting info
     	super( playerNum, rules, theDriver );
-        type = Player.NETWORKPLAYER;
+        type = PlayerType.NETWORKPLAYER;
     	// set values to correct initial state
    }
 
@@ -719,10 +718,10 @@ public void endOfGame(String endMessage){
     * @pre instance of player exists
     * @post this method has changed nothing
     */
-   public int getPlayerType()
+   public PlayerType getPlayerType()
    {
    	// return the constant representing this class
-   	return NETWORKPLAYER;
+   	return PlayerType.LOCALPLAYER;
    }
 
     

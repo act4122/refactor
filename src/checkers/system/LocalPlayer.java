@@ -29,7 +29,7 @@ public class LocalPlayer extends Player {
      */
     public LocalPlayer( int num, Rules rules, CheckersGame theDriver ){
 	super( num, rules, theDriver );
-	type = Player.LOCALPLAYER;
+	type = PlayerType.LOCALPLAYER;
     }
     
     /**
