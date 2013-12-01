@@ -26,6 +26,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -33,7 +34,7 @@ import javax.swing.JPanel;
 
 import checkers.system.Board;
 import checkers.system.CheckersGame;
-import checkers.system.Piece;
+import checkers.system.Piece.PieceType;
 
 /**
  *
@@ -1260,7 +1261,7 @@ public class GameScreen extends JPanel implements ActionListener{
 				if( board.colorAt( i ) == Color.blue ){
 
 					//if there is a  single piece there
-					if((board.getPieceAt(i)).getType() == Piece.TYPE.SINGLE){
+					if((board.getPieceAt(i)).getType() == PieceType.SINGLE){
 
 						//show a blue single piece in that spot board
 						temp = (JButton)possibleSquares.get(i);
@@ -1274,7 +1275,7 @@ public class GameScreen extends JPanel implements ActionListener{
 						}
 
 						//if there is a kinged piece there
-					}else if((board.getPieceAt(i)).getType() == Piece.TYPE.KING ){
+					}else if((board.getPieceAt(i)).getType() == PieceType.KING ){
 
 						//show a blue king piece in that spot board
 						temp= (JButton)possibleSquares.get(i);
@@ -1291,7 +1292,7 @@ public class GameScreen extends JPanel implements ActionListener{
 				}else if( board.colorAt( i ) == Color.white ){
 
 					//if there is a single piece there
-					if((board.getPieceAt(i)).getType() == Piece.TYPE.SINGLE){
+					if((board.getPieceAt(i)).getType() == PieceType.SINGLE){
 
 						//show a blue single piece in that spot board
 						temp = (JButton)possibleSquares.get(i);
@@ -1303,7 +1304,7 @@ public class GameScreen extends JPanel implements ActionListener{
 						}catch( Exception e ){}
 
 						//if there is a kinged piece there
-					}else if((board.getPieceAt(i)).getType() == Piece.TYPE.KING ){
+					}else if((board.getPieceAt(i)).getType() == PieceType.KING){
 
 						//show a blue king piece in that spot board
 						temp = (JButton)possibleSquares.get(i);

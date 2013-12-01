@@ -14,8 +14,8 @@ package checkers.system;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
-import checkers.system.Piece.TYPE;
 
+import checkers.system.Piece.PieceType;
 
 /**
  *  This class represents the board on which checkers is being played.
@@ -28,9 +28,6 @@ import checkers.system.Piece.TYPE;
 public class Board {
 
    private Piece pieces[]; // the pieces that are on the board
-   public static int SINGLE = 0;
-   public static int KING = 1;
-
 
    /**
     * This constructor creates a new board at the beginning of the game
@@ -44,32 +41,32 @@ public class Board {
 	   pieces = new Piece[64];
 
 	   // create blue pices
-	   pieces[1] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[3] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[5] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[7] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[8] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[10] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[12] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[14] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[17] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[19] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[21] = new Piece( TYPE.SINGLE, Color.blue );
-	   pieces[23] = new Piece( TYPE.SINGLE, Color.blue );
+	   pieces[1] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[3] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[5] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[7] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[8] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[10] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[12] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[14] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[17] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[19] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[21] = new Piece( PieceType.SINGLE, Color.blue );
+	   pieces[23] = new Piece( PieceType.SINGLE, Color.blue );
 
 	   // create the white pieces
-	   pieces[40] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[42] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[44] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[46] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[49] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[51] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[53] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[55] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[56] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[58] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[60] = new Piece( TYPE.SINGLE, Color.white );
-	   pieces[62] = new Piece( TYPE.SINGLE, Color.white );
+	   pieces[40] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[42] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[44] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[46] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[49] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[51] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[53] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[55] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[56] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[58] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[60] = new Piece( PieceType.SINGLE, Color.white );
+	   pieces[62] = new Piece( PieceType.SINGLE, Color.white );
 
    }
 
@@ -97,7 +94,7 @@ public class Board {
 
 	   // if it is not set a start position in the array to null
 	   // put a piece object at the end position in the array
-	   // that was at the start positon before
+	   // that was at the start position before
 	   } else {
 	   	
 		   pieces[end] = pieces[start];
@@ -164,7 +161,7 @@ public class Board {
 	   // go to the space position in the array and place it there
 	   // if the position is not ocupied
 	   Color color = pieces[space].getColor();
-	   Piece piece = new Piece( TYPE.KING, color );
+	   Piece piece = new Piece( PieceType.KING, color );
 	   pieces[space] = piece;
 	   
    }
@@ -205,7 +202,7 @@ public class Board {
     */
    public Piece getPieceAt(int space) {
 
-	   Piece returnValue = new Piece(TYPE.SINGLE, Color.red);
+	   Piece returnValue = new Piece(PieceType.SINGLE, Color.red);
 	   
 	   try{
 	   	   // check if there is piece at space position

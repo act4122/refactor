@@ -25,15 +25,15 @@ import java.awt.Color;
 public class Piece {
 	
    private Color color; // the color of the piece
-   public enum TYPE { SINGLE, KING };
-   private TYPE type;
+   public enum PieceType { SINGLE, KING };
+   private PieceType type;
       
    /**
     * The constructor for this piece
     * 
     * @param c - the color for this piece
     */
-   public Piece( TYPE type, Color c ) {
+   public Piece( PieceType type, Color c ) {
 
 	   this.type = type;
 	   color = c;
@@ -44,7 +44,7 @@ public class Piece {
     * 
     * @return the type of the piece
     */
-   public TYPE getType() {
+   public PieceType getType() {
 	   return type;
    }
    
