@@ -79,6 +79,9 @@ public class CheckersGame {
 
 		// Create the rules passing in the board
 		theRules = new Rules( theBoard, this );	
+		
+		// This fixes a null ptr excep. in GUI for temporary purposes
+		gameType = GameType.Local;
 	}
 
 	/**
