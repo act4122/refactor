@@ -77,6 +77,7 @@ public class CheckersGame {
 		// Create the board       
 		theBoard = new Board();
 
+		gameType = GameType.Local;
 		// Create the rules passing in the board
 		theRules = new Rules( theBoard, this );	
 	}
