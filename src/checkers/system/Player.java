@@ -111,7 +111,7 @@ public abstract class Player {
      * @pre a game is in progress
      * @pre a draw has been offered
      */
-    //FIX THIS SHIT - DON'T NEED TO PASS IN PLAYER OBJECT
+    
     public abstract void offerDraw( Player player ); 
     
     /**
